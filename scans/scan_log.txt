@@ -1,0 +1,15 @@
+[2025-05-24 10:33:29] ERROR: Verification failed: Document not found: D:\SecureQR\ttd kanto.jpg
+[2025-05-24 10:33:58] ERROR: Verification failed: Document not found: D:\SecureQR\ttd kanto.jpg
+[2025-05-24 10:34:14] ERROR: Verification failed: Document not found: D:\SecureQR\ttd kanto.jpg
+[2025-05-24 10:35:05] ERROR: Verification failed: Document not found: D:\SecureQR\ttd kanto.jpg
+[2025-05-24 10:36:02] ERROR: Verification failed: Document not found: D:\SecureQR\ttd kanto.jpg
+Available files in directory: .venv, app, keys, logs, main.py, README.md, requirements.txt, scans, tests, test_run.py, ui...
+[2025-05-24 16:47:34] ERROR: Verification failed: Document not found: D:\SecureQR\ttd kanto.jpg
+Available files in directory: .venv, app, keys, logs, main.py, README.md, requirements.txt, scans, tests, test_run.py, ui...
+[2025-05-24 16:59:26] ERROR: Verification failed: Document not found: D:\SecureQR\QR_sukanto_123456_png.png
+Available files in directory: .venv, app, keys, logs, main.py, README.md, requirements.txt, scans, tests, test_run.py, ui...
+[2025-05-24 16:59:32] ERROR: Verification failed: Document not found: D:\SecureQR\QR_sukanto_123456_png.png
+Available files in directory: .venv, app, keys, logs, main.py, README.md, requirements.txt, scans, tests, test_run.py, ui...
+[2025-05-24 18:26:30] Verification - Document: ttd kanto.jpg, Signature: ttd kanto.sig, Key: default, Result: VALID
+[2025-05-24 18:35:10] Verification - Document: ttd kanto.jpg, Signature: ttd kanto.sig, Key: default, Result: VALID
+[2025-05-24 21:27:52] Verification - Document: Presentation1.pptx, Signature: Presentation1.sig, Key: default, Result: VALID

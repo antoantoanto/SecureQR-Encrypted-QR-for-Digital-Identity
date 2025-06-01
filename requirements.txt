@@ -1,0 +1,19 @@
+# Core Dependencies
+numpy>=2.0.0  # Use NumPy 2.x
+pycryptodome==3.20.0
+cryptography>=42.0.5
+tkinterweb>=3.13.0
+Pillow>=10.0.0
+
+# QR Code Generation
+qrcode[pil]>=7.4.2
+python-barcode>=0.15.1
+
+# QR Code Scanning
+opencv-python>=4.9.0.80  # Version that supports NumPy 2.x
+pyzbar>=0.1.9
+
+# Advanced Features
+pyotp>=2.9.0             # For 2FA
+web3>=6.11.1             # For blockchain integration
+eth-account>=0.10.0      # For Ethereum account management
