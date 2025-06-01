@@ -13,3 +13,4 @@ Available files in directory: .venv, app, keys, logs, main.py, README.md, requir
 [2025-05-24 18:26:30] Verification - Document: ttd kanto.jpg, Signature: ttd kanto.sig, Key: default, Result: VALID
 [2025-05-24 18:35:10] Verification - Document: ttd kanto.jpg, Signature: ttd kanto.sig, Key: default, Result: VALID
 [2025-05-24 21:27:52] Verification - Document: Presentation1.pptx, Signature: Presentation1.sig, Key: default, Result: VALID
+[2025-06-01 09:34:19] Verification - Document: Format Dokumentasi dan Manual Aplikasi Kriptografi.docx, Signature: Format Dokumentasi dan Manual Aplikasi Kriptografi.sig, Key: default, Result: VALID

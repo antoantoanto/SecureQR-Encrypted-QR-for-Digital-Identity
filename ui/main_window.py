@@ -11,7 +11,6 @@ from typing import Optional, Tuple, Dict, Any, List, Union
 import cv2
 import numpy as np
 from PIL import Image, ImageTk
-from pyzbar.pyzbar import decode
 import tkinter as tk
 from tkinter import ttk, messagebox, filedialog, scrolledtext
 
@@ -875,10 +874,12 @@ class CryptoSignApp:
             # Only process QR codes in the center rectangle
             roi = frame[center_y-size:center_y+size, center_x-size:center_x+size]
             
-            # Try to decode QR code
-            decoded_objects = decode(roi)
-            if decoded_objects:
-                data = decoded_objects[0].data.decode('utf-8')
+            # Initialize QR code detector
+            qr_detector = cv2.QRCodeDetector()
+            
+            # Try to detect and decode QR code
+            data, points, _ = qr_detector.detectAndDecode(roi)
+            if data and points is not None:
                 self.process_scanned_data(data)
                 self.stop_scanning()
                 return

@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
-from pyzbar.pyzbar import decode
-from typing import Optional, Tuple
+from typing import Optional, Tuple, List, Dict, Any
 import time
 
 class QRScanner:
@@ -41,22 +40,26 @@ class QRScanner:
                 return None, None
         
         start_time = time.time()
+        qr_detector = cv2.QRCodeDetector()
         
         while time.time() - start_time < timeout:
             ret, frame = self.cap.read()
             if not ret:
                 continue
                 
-            # Convert to grayscale for better QR detection
-            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            # Detect and decode QR code
+            decoded_info, points, _ = qr_detector.detectAndDecode(frame)
             
-            # Try to decode QR codes
-            decoded_objects = decode(gray)
-            
-            if decoded_objects:
-                # Get the first detected QR code
-                qr_data = decoded_objects[0].data.decode('utf-8')
+            # If we found a QR code
+            if points is not None and len(decoded_info) > 0 and decoded_info[0]:
+                qr_data = decoded_info[0]
+                # Draw the QR code boundary
+                points = points[0].astype(np.int32)
+                cv2.polylines(frame, [points], True, (0, 255, 0), 3)
                 return qr_data, frame
+                
+            # Add a small delay to prevent high CPU usage
+            time.sleep(0.1)
             
             # Show the frame (for debugging)
             cv2.imshow('QR Scanner', frame)

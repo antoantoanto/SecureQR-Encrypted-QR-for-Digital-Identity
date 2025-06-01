@@ -195,33 +195,29 @@ class SecureQR:
         """
         try:
             import cv2
-            from pyzbar.pyzbar import decode
             
             # Read the image
             img = cv2.imread(image_path)
             if img is None:
                 raise ValueError(f"Could not read image: {image_path}")
-                
-            # Convert to grayscale
-            gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
             
-            # Decode QR code
-            decoded_objects = decode(gray)
+            # Initialize the QR code detector
+            qr_detector = cv2.QRCodeDetector()
             
-            if not decoded_objects:
+            # Detect and decode QR code
+            data, points, _ = qr_detector.detectAndDecode(img)
+            
+            if not data or not points.any():
                 return None
-                
-            # Return the first decoded data
-            data = decoded_objects[0].data
             
             # Try to decode as base64
             try:
-                return base64.b64decode(data)
+                return base64.b64decode(data.encode('utf-8'))
             except:
-                return data
+                return data.encode('utf-8')
                 
         except ImportError:
-            raise ImportError("OpenCV and pyzbar are required for QR code scanning")
+            raise ImportError("OpenCV is required for QR code scanning")
 
 
 def test_cryptosign():

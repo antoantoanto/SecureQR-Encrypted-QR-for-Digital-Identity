@@ -262,20 +262,29 @@ class CryptoManager:
             
         Returns:
             Decoded data as a string
-        """
-        from pyzbar.pyzbar import decode
-        from PIL import Image
-        
-        try:
-            # Open and decode the QR code
-            img = Image.open(image_path)
-            decoded_objects = decode(img)
             
-            if not decoded_objects:
+        Raises:
+            ValueError: If no QR code is found or there's an error reading it
+        """
+        try:
+            import cv2
+            import numpy as np
+            
+            # Read the image
+            img = cv2.imread(str(image_path))
+            if img is None:
+                raise ValueError(f"Could not read image: {image_path}")
+            
+            # Initialize the QR code detector
+            qr_detector = cv2.QRCodeDetector()
+            
+            # Detect and decode QR code
+            data, points, _ = qr_detector.detectAndDecode(img)
+            
+            if not data or not points.any():
                 raise ValueError("No QR code found in the image")
                 
-            # Return the first decoded data
-            return decoded_objects[0].data.decode('utf-8')
+            return data
             
         except Exception as e:
             raise ValueError(f"Failed to read QR code: {str(e)}")
